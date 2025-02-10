@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/viewimgecourse"
+        android:layout_width="170dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        />
+    <TextView
+        android:id="@+id/viewcoursename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course Name"
+        app:layout_constraintStart_toEndOf="@id/viewimgecourse"
+        app:layout_constraintTop_toTopOf="@id/viewimgecourse"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp"
+        />
+    <TextView
+        android:id="@+id/viewcourselecure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lecteur Name"
+        app:layout_constraintStart_toEndOf="@id/viewimgecourse"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/viewcoursename"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp"
+        />
+    <TextView
+        android:id="@+id/pricecourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price Course"
+        app:layout_constraintStart_toEndOf="@id/viewimgecourse"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/viewcourselecure"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp"
+        />
+    <TextView
+        android:id="@+id/hourecourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hours Course"
+        app:layout_constraintStart_toEndOf="@id/viewimgecourse"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/pricecourse"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp"
+        />
+    <TextView
+        android:id="@+id/nomofstucourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom Of Student Course"
+        app:layout_constraintStart_toEndOf="@id/viewimgecourse"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/hourecourse"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp"
+        />
+
+    <TextView
+        android:id="@+id/deccourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dec Of Course"
+        app:layout_constraintStart_toEndOf="@id/viewimgecourse"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/nomofstucourse"
+        android:layout_marginStart="5dp"
+        android:textSize="16dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

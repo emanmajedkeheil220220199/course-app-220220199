@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCourseActivity">
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/imagecourseadd"
+        android:layout_margin="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Add Photo Course"
+        app:layout_constraintTop_toTopOf="@id/imagecourseadd"
+        app:layout_constraintEnd_toEndOf="@id/imagecourseadd"
+        app:layout_constraintStart_toStartOf="@id/imagecourseadd"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagecourseadd"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add CourseTitle"
+        android:id="@+id/edcoursetitle"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edcoursetitle"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add Course Price"
+        android:id="@+id/edcourseprice"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edcourseprice"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add Number Of Students"
+        android:id="@+id/ednomofstudent"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ednomofstudent"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add Number Of Course Hours"
+        android:id="@+id/ednomofcoursehours"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ednomofcoursehours"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add Lecturer Name"
+        android:id="@+id/edlectuername"
+        android:inputType="text"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edlectuername"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:hint="Add Details Of Course "
+        android:id="@+id/eddecofcourse"
+        android:inputType="text"
+        android:lines="200"
+        />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eddecofcourse"
+        android:layout_margin="20dp"
+        android:text="Add"
+        android:id="@+id/btnaddcourse"
+        />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnaddcourse"
+        android:layout_margin="20dp"
+        android:text="View"
+        android:id="@+id/btnviewcourse"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
