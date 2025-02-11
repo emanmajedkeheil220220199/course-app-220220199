@@ -1,14 +1,20 @@
-package Entity;
+package com.example.courseapplication220220199.Entity;
 
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {@ForeignKey(entity = CorseEntity
-        .class,parentColumns = "Id_Course",childColumns ="Id_Course"),@ForeignKey(entity = StudentEntity.class,
-        parentColumns = "Id_OfStudent",childColumns = "Id_OfStudent")})
+@Entity(
+        foreignKeys = {
+                @ForeignKey(entity = CorseEntity.class,
+                        parentColumns = "Id_Course",
+                        childColumns = "Id_Course")
+        },
+        indices = {@Index(value = "Id_Course")}
+)
 public class StudentCourseEntity {
 @PrimaryKey(autoGenerate = true)
     private  int Id_Course;

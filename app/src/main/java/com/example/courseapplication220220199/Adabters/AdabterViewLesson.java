@@ -1,20 +1,17 @@
-package Adabters;
+package com.example.courseapplication220220199.Adabters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.courseapplication220220199.databinding.ItemViewLessonBinding;
-import java.net.URI;
+
 import java.util.ArrayList;
 
-import Entity.LessonEntity; // تأكد من استيراد الكلاس الخاص بك
+import com.example.courseapplication220220199.Entity.LessonEntity; // تأكد من استيراد الكلاس الخاص بك
 
 public class AdabterViewLesson extends RecyclerView.Adapter<AdabterViewLesson.LessonViewHolder> {
 

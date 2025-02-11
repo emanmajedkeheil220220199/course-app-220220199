@@ -1,4 +1,4 @@
-package Daos;
+package com.example.courseapplication220220199.Daos;
 
 
 import androidx.lifecycle.LiveData;
@@ -10,7 +10,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import Entity.StudentEntity;
+import com.example.courseapplication220220199.Entity.StudentEntity;
 
 @Dao
 public interface StudentDao {

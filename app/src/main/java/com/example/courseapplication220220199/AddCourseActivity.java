@@ -15,18 +15,20 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.courseapplication220220199.Entity.CorseEntity;
+import com.example.courseapplication220220199.RoomDataBase.MyViewModel;
 import com.example.courseapplication220220199.databinding.ActivityAddCourseBinding;
 
 import java.io.IOException;
 
-import Entity.CorseEntity;
-import RoomDataBase.MyViewModel;
-
 public class AddCourseActivity extends AppCompatActivity {
+
     ActivityAddCourseBinding binding;
     MyViewModel viewModel;
     Uri imageUri;
     private int selectedCategoryId;
+    private CorseEntity courseToEdit;
+
     private final ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -47,72 +49,118 @@ public class AddCourseActivity extends AppCompatActivity {
                 }
             });
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityAddCourseBinding.inflate(getLayoutInflater());
-        EdgeToEdge.enable(this);
-        setContentView(binding.getRoot());
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      binding = ActivityAddCourseBinding.inflate(getLayoutInflater());
+      EdgeToEdge.enable(this);
+      setContentView(binding.getRoot());
 
-        // استلام الـ category_id من Activity السابقة
-        selectedCategoryId = getIntent().getIntExtra("category_id", -1);
+      viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        // التحقق من صحة الـ category_id
-        if (selectedCategoryId != -1) {
-            Toast.makeText(this, "تم استلام معرف التصنيف: " + selectedCategoryId, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "لم يتم استلام معرف التصنيف بشكل صحيح", Toast.LENGTH_SHORT).show();
-        }
+      selectedCategoryId = getIntent().getIntExtra("category_id", -1);
+      courseToEdit = (CorseEntity) getIntent().getSerializableExtra("course");
+      boolean isEditMode = getIntent().getBooleanExtra("isEditMode", false);
 
-        // تهيئة الـ ViewModel
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-        binding.imagecourseadd.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            imagePickerLauncher.launch(intent);
-        });
+      if (isEditMode) {
+          binding.btnaddcourse.setText("Save Edits");
+      }
 
-        // التعامل مع زر الإضافة
-        binding.btnaddcourse.setOnClickListener(view -> {
-            // استخراج البيانات المدخلة من المستخدم
-            String courseTitle = binding.edcoursetitle.getText().toString();
-            String coursePrice = binding.edcourseprice.getText().toString();
-            String numOfStudentsStr = binding.ednomofstudent.getText().toString();
-            String courseHoursStr = binding.ednomofcoursehours.getText().toString();
-            String lecturerName = binding.edlectuername.getText().toString();
-            String courseDetails = binding.eddecofcourse.getText().toString();
+      if (courseToEdit != null) {
+          populateFields(courseToEdit);
+      }
 
-            // التحقق من صحة البيانات المدخلة
-            if (courseTitle.isEmpty() || coursePrice.isEmpty() || numOfStudentsStr.isEmpty() ||
-                    courseHoursStr.isEmpty() || lecturerName.isEmpty() || courseDetails.isEmpty() || selectedCategoryId == -1) {
-                Toast.makeText(this, "Please fill all fields and select a category", Toast.LENGTH_SHORT).show();
-                return;
-            }
+      binding.imagecourseadd.setOnClickListener(v -> {
+          Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+          imagePickerLauncher.launch(intent);
+      });
 
-            // تحويل المدخلات النصية إلى قيم رقمية حيثما كان ذلك ضروريًا
-            int numOfStudents = 0;
-            int courseHours = 0;
+      binding.btnaddcourse.setOnClickListener(view -> {
+          String courseTitle = binding.edcoursetitle.getText().toString();
+          String coursePrice = binding.edcourseprice.getText().toString();
+          String numOfStudentsStr = binding.ednomofstudent.getText().toString();
+          String courseHoursStr = binding.ednomofcoursehours.getText().toString();
+          String lecturerName = binding.edlectuername.getText().toString();
+          String courseDetails = binding.eddecofcourse.getText().toString();
+
+          if (courseTitle.isEmpty() || coursePrice.isEmpty() || numOfStudentsStr.isEmpty() ||
+                  courseHoursStr.isEmpty() || lecturerName.isEmpty() || courseDetails.isEmpty() || selectedCategoryId == -1) {
+              Toast.makeText(this, "Please fill all fields and select a category", Toast.LENGTH_SHORT).show();
+              return;
+          }
+
+          int numOfStudents = 0;
+          int courseHours = 0;
+          try {
+              numOfStudents = Integer.parseInt(numOfStudentsStr);
+              courseHours = Integer.parseInt(courseHoursStr);
+          } catch (NumberFormatException e) {
+              Toast.makeText(this, "Please enter valid numbers for students and course hours.", Toast.LENGTH_SHORT).show();
+              return;
+          }
+          String imageUrl = imageUri != null ? imageUri.toString() : null;
+
+          if (courseToEdit != null) {
+              updateCourse(courseTitle, coursePrice, numOfStudents, courseHours, lecturerName, courseDetails, imageUrl);
+          } else {
+              addNewCourse(courseTitle, coursePrice, numOfStudents, courseHours, lecturerName, courseDetails, imageUrl);
+          }
+      });
+  }
+    private void populateFields(CorseEntity course) {
+        binding.edcoursetitle.setText(course.getNameOfCourse());
+        binding.edcourseprice.setText(course.getPriceOfCourse());
+        binding.ednomofstudent.setText(String.valueOf(course.getNomOfStudent()));
+        binding.ednomofcoursehours.setText(String.valueOf(course.getNomHours()));
+        binding.edlectuername.setText(course.getNameOflecturer());
+        binding.eddecofcourse.setText(course.getDetilesOfCourse());
+        selectedCategoryId = course.getId_Category();
+        if (course.getImageUrl() != null) {
+            imageUri = Uri.parse(course.getImageUrl());
             try {
-                numOfStudents = Integer.parseInt(numOfStudentsStr); // تحويل الطلاب إلى int
-                courseHours = Integer.parseInt(courseHoursStr); // تحويل ساعات الدورة إلى int
-            } catch (NumberFormatException e) {
-                Toast.makeText(this, "Please enter valid numbers for students and course hours.", Toast.LENGTH_SHORT).show();
-                return; // إذا حدث خطأ في التحويل، إيقاف العملية
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                binding.imagecourseadd.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            String imageUrl = imageUri != null ? imageUri.toString() : null;
+        }
+    }
 
-            CorseEntity newCourse = new CorseEntity();
-            newCourse.setNameOfCourse(courseTitle);
-            newCourse.setPriceOfCourse(coursePrice);
-            newCourse.setNomOfStudent(numOfStudents);
-            newCourse.setNomHours(courseHours);
-            newCourse.setNameOflecturer(lecturerName);
-            newCourse.setDetilesOfCourse(courseDetails);
-            newCourse.setId_Category(selectedCategoryId);
-            newCourse.setImageUrl(imageUrl);
-            viewModel.InsertCourse(newCourse);
+    private void updateCourse(String title, String price, int students, int hours, String lecturer, String details, String imageUrl) {
+        if (!title.equals(courseToEdit.getNameOfCourse()) || !price.equals(courseToEdit.getPriceOfCourse()) ||
+                students != courseToEdit.getNomOfStudent() || hours != courseToEdit.getNomHours() ||
+                !lecturer.equals(courseToEdit.getNameOflecturer()) || !details.equals(courseToEdit.getDetilesOfCourse()) ||
+                (imageUrl != null && !imageUrl.equals(courseToEdit.getImageUrl()))) {
 
-            // عرض رسالة تأكيد
-            Toast.makeText(this, "Course Added Successfully", Toast.LENGTH_SHORT).show();
-        });
+            courseToEdit.setNameOfCourse(title);
+            courseToEdit.setPriceOfCourse(price);
+            courseToEdit.setNomOfStudent(students);
+            courseToEdit.setNomHours(hours);
+            courseToEdit.setNameOflecturer(lecturer);
+            courseToEdit.setDetilesOfCourse(details);
+            courseToEdit.setImageUrl(imageUrl);
+            viewModel.UpdateCourse(courseToEdit);
+
+            Toast.makeText(this, "Course updated successfully", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(this, "No changes detected", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void addNewCourse(String title, String price, int students, int hours, String lecturer, String details, String imageUrl) {
+        CorseEntity newCourse = new CorseEntity();
+        newCourse.setNameOfCourse(title);
+        newCourse.setPriceOfCourse(price);
+        newCourse.setNomOfStudent(students);
+        newCourse.setNomHours(hours);
+        newCourse.setNameOflecturer(lecturer);
+        newCourse.setDetilesOfCourse(details);
+        newCourse.setId_Category(selectedCategoryId);
+        newCourse.setImageUrl(imageUrl);
+        viewModel.InsertCourse(newCourse);
+
+        Toast.makeText(this, "Course Added Successfully", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

@@ -1,4 +1,4 @@
-package Daos;
+package com.example.courseapplication220220199.Daos;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -9,7 +9,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import Entity.CorseEntity;
+import com.example.courseapplication220220199.Entity.CorseEntity;
 
 @Dao
 
