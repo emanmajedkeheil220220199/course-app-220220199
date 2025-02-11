@@ -5,9 +5,6 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -15,11 +12,10 @@ import com.example.courseapplication220220199.databinding.ActivityCourseAndLesso
 
 import java.util.ArrayList;
 
-import Adabters.AdabterViewCourse;
-import Adabters.AdabterViewLesson;
-import Entity.CorseEntity;
-import Entity.LessonEntity;
-import RoomDataBase.MyViewModel;
+import com.example.courseapplication220220199.Adabters.AdabterViewLesson;
+import com.example.courseapplication220220199.Entity.CorseEntity;
+import com.example.courseapplication220220199.Entity.LessonEntity;
+import com.example.courseapplication220220199.RoomDataBase.MyViewModel;
 
 
 public class CourseAndLesson extends AppCompatActivity {

@@ -1,18 +1,25 @@
-package Entity;
+package com.example.courseapplication220220199.Entity;
 
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
+
+import java.io.Serializable;
 
 
-@Entity(foreignKeys = {@ForeignKey(entity = CategoryEntity.class,
-        parentColumns = "Id_Category",
-        childColumns = "Id_Category",
-        onDelete = ForeignKey.CASCADE)})
-public class CorseEntity {
-@PrimaryKey(autoGenerate = true)
+@Entity(
+        foreignKeys = {
+                @ForeignKey(entity = CategoryEntity.class,
+                        parentColumns = "Id_Category",
+                        childColumns = "Id_Category",
+                        onDelete = ForeignKey.CASCADE) // Add this line
+        },
+        indices = {@Index(value = "Id_Category")}
+)
+public class CorseEntity implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private int Id_Course;
     private int Id_Category;
     private String NameOfCourse;

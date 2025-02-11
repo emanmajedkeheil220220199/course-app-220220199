@@ -1,10 +1,9 @@
-package Adabters;
+package com.example.courseapplication220220199.Adabters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,8 +18,8 @@ import com.example.courseapplication220220199.databinding.ItemViewCategoryBindin
 
 import java.util.ArrayList;
 
-import Entity.CategoryEntity;
-import RoomDataBase.MyViewModel;
+import com.example.courseapplication220220199.Entity.CategoryEntity;
+import com.example.courseapplication220220199.RoomDataBase.MyViewModel;
 
 public class AdbterViewCategory extends RecyclerView.Adapter<AdbterViewCategory.AdminCategory> {
     ArrayList<CategoryEntity> categoryCourses;

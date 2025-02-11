@@ -3,22 +3,16 @@ package com.example.courseapplication220220199;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.courseapplication220220199.databinding.ActivityAddLessonBinding;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import Adabters.AdabterViewLesson;
-import Entity.LessonEntity;
-import RoomDataBase.MyViewModel;
+import com.example.courseapplication220220199.Adabters.AdabterViewLesson;
+import com.example.courseapplication220220199.Entity.LessonEntity;
+import com.example.courseapplication220220199.RoomDataBase.MyViewModel;
 public class AddLesson extends AppCompatActivity {
 
     MyViewModel viewModel;

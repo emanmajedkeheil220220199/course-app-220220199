@@ -1,19 +1,18 @@
-package RoomDataBase;
+package com.example.courseapplication220220199.RoomDataBase;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.room.Query;
 
 import java.util.List;
 
-import Entity.CategoryEntity;
-import Entity.CorseEntity;
-import Entity.LessonEntity;
-import Entity.StudentCourseEntity;
-import Entity.StudentEntity;
+import com.example.courseapplication220220199.Entity.CategoryEntity;
+import com.example.courseapplication220220199.Entity.CorseEntity;
+import com.example.courseapplication220220199.Entity.LessonEntity;
+import com.example.courseapplication220220199.Entity.StudentCourseEntity;
+import com.example.courseapplication220220199.Entity.StudentEntity;
 
 public class MyViewModel extends AndroidViewModel {
     private MyRepository repo;

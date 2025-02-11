@@ -12,9 +12,9 @@ import com.example.courseapplication220220199.databinding.ActivityAddCategoryAdm
 
 import java.util.ArrayList;
 
-import Adabters.AdbterViewCategory;
-import Entity.CategoryEntity;
-import RoomDataBase.MyViewModel;
+import com.example.courseapplication220220199.Adabters.AdbterViewCategory;
+import com.example.courseapplication220220199.Entity.CategoryEntity;
+import com.example.courseapplication220220199.RoomDataBase.MyViewModel;
 
 public class AddCategoryAdmin extends AppCompatActivity {
     ActivityAddCategoryAdminBinding binding;

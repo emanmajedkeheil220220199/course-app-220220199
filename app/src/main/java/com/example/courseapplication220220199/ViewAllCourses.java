@@ -2,13 +2,9 @@ package com.example.courseapplication220220199;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -16,11 +12,11 @@ import com.example.courseapplication220220199.databinding.ActivityViewAllCourses
 
 import java.util.ArrayList;
 
-import Adabters.AdabterViewCourse;
-import Adabters.AdbterViewCategory;
-import Entity.CategoryEntity;
-import Entity.CorseEntity;
-import RoomDataBase.MyViewModel;
+import com.example.courseapplication220220199.Adabters.AdabterViewCourse;
+import com.example.courseapplication220220199.Adabters.AdbterViewCategory;
+import com.example.courseapplication220220199.Entity.CategoryEntity;
+import com.example.courseapplication220220199.Entity.CorseEntity;
+import com.example.courseapplication220220199.RoomDataBase.MyViewModel;
 
 public class ViewAllCourses extends AppCompatActivity {
     ActivityViewAllCoursesBinding binding;

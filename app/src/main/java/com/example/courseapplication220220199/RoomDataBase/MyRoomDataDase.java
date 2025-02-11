@@ -1,4 +1,4 @@
-package RoomDataBase;
+package com.example.courseapplication220220199.RoomDataBase;
 
 import android.content.Context;
 
@@ -10,17 +10,17 @@ import androidx.room.TypeConverters;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import Daos.CategoryDao;
-import Daos.CourseDao;
-import Daos.LessonDao;
-import Daos.StudentCourseDao;
-import Daos.StudentDao;
-import Entity.CategoryEntity;
-import Entity.CorseEntity;
-import Entity.LessonEntity;
-import Entity.StudentCourseEntity;
-import Entity.StudentEntity;
-import Entity.UriConverter;
+import com.example.courseapplication220220199.Daos.CategoryDao;
+import com.example.courseapplication220220199.Daos.CourseDao;
+import com.example.courseapplication220220199.Daos.LessonDao;
+import com.example.courseapplication220220199.Daos.StudentCourseDao;
+import com.example.courseapplication220220199.Daos.StudentDao;
+import com.example.courseapplication220220199.Entity.CategoryEntity;
+import com.example.courseapplication220220199.Entity.CorseEntity;
+import com.example.courseapplication220220199.Entity.LessonEntity;
+import com.example.courseapplication220220199.Entity.StudentCourseEntity;
+import com.example.courseapplication220220199.Entity.StudentEntity;
+import com.example.courseapplication220220199.Entity.UriConverter;
 
 @Database(entities = {StudentCourseEntity.class, CategoryEntity.class, LessonEntity.class, StudentEntity.class, CorseEntity.class}, version = 1, exportSchema = false)
 

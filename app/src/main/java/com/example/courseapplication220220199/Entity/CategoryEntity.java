@@ -1,4 +1,4 @@
-package Entity;
+package com.example.courseapplication220220199.Entity;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

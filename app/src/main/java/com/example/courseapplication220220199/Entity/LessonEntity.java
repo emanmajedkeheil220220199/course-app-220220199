@@ -1,17 +1,19 @@
-package Entity;
-
-
-import android.net.Uri;
+package com.example.courseapplication220220199.Entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.net.URI;
-
-@Entity   (foreignKeys = {@ForeignKey(entity = CorseEntity.class,
-        parentColumns = "Id_Course",childColumns = "Id_Course")})
-
+@Entity(
+        foreignKeys = {
+                @ForeignKey(entity = CorseEntity.class,
+                        parentColumns = "Id_Course",
+                        childColumns = "Id_Course",
+                        onDelete = ForeignKey.CASCADE)
+        },
+        indices = {@Index(value = "Id_Course")}
+)
 public class LessonEntity {
     @PrimaryKey(autoGenerate = true)
     private int Id_Lesson;
@@ -20,8 +22,7 @@ public class LessonEntity {
     private String descLesson;
     private String linklesson;
 
-    public LessonEntity( int id_Course, String nameLesson, String descLesson, String linklesson) {
-
+    public LessonEntity(int id_Course, String nameLesson, String descLesson, String linklesson) {
         Id_Course = id_Course;
         NameLesson = nameLesson;
         this.descLesson = descLesson;
@@ -70,5 +71,4 @@ public class LessonEntity {
     public void setLinklesson(String linklesson) {
         this.linklesson = linklesson;
     }
-
 }
